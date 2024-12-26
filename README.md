@@ -6,8 +6,6 @@ The core of the project is the idea of exploring the influence of various factor
 
 The motivation behind the project came from an informal discussion within the team about our disagreements over the ratings of certain movies. When it came time to come up with an idea for the project, we wanted to transpose our thoughts on the film question onto beer reviews. Let's embark on an adventure and find out as we go along that the ratings you use to pick your next beer may not be so truthful after all!
 
-<img src="src/data/meme.jpg" width="400px"/>
-
 ## 🔍 Research Questions
 
 The questions we intend to answer concern various factors that could influence ratings.
@@ -15,12 +13,6 @@ The questions we intend to answer concern various factors that could influence r
 1. How can we quantify users' knowledge of beer and what's the impact on the ratings ?
 2. How can the preferences of the users impact the ratings on the websites ?
 3. Are text reviews and user scores consistent with each other across regions?
-4. Are users influenced by the past rating of the beer ?
-    -  Inconclusive after work done for P3
-5. Are users influenced by their past ratings ?
-    -  Inconclusive after work done for P3
-6. Are users influenced by current trends in beer consumption ? 
-    -  Inconclusive after work done for P3
 
 ## 📦 Additional datasets
 
@@ -51,31 +43,6 @@ In order to analyze how preferences, in the sense of the number of beers rated, 
 
 In order to compare the similarity of textual reviews and ratings, we used the NLP model ⁠ nlptown/bert-base-multilingual-uncased-sentiment ⁠ [^1] for sentiment analysis. More specifically, the model predicts the sentiment of a review as an integer in $[1,5]$ which corresponds to the same range as the scores given by the users. We then compared the deviation of predicted ratings to actual ratings and assessed the difference conditionned on the region
 of the users using ANOVA and Tukey pair-wise tests.
-
-### 4. & 5. Are we influenced by our past ratings and the past rating of the beer ? 
-    -  Inconclusive after work done for P3, planned method only
-
-We believe that the effects of these 2 hypotheses may be correlated, and we therefore plan to analyze their impact using a linear regression with the following parameters of interest :
-- Average of this user's past ratings
-- Average of the beer at the time of rating
-- Interaction term for the joint effect
-
-After preliminary analyses, we performed an F-test on the coefficient of the interaction term at the $\alpha=0.01$ threshold. The test concluded on the rejection of the null hypothesis, so it seems that the interaction of the 2 effects is statistically significant.
-
-We will analyse the results of the linear regression in more details, and add other parameters to observe their effects (e.g. past average by beer style).
-
-### 6. Are users influenced by current trends in beer consumption ?
-    -  Inconclusive after work done for P3, planned method only
-
-In order to analyze the impact of trends on scores, we first need to identify trends. We intend to use a hybrid approach:
-- Manually identify trends via research on news sites and market studies
-- Automatically identify trends by analyzing the number of ratings for a certain style of beer as a function of the number of active users.
-
-We will define the active status of a user according to parameters such as his review rate, the date since his last review and other parameters.
-
-Subsequently, we plan to use hypothesis tests such as the T-test to compare average ratings during trends and outside them. 
-
-We also plan to use a linear regression model to estimate the impact of trends on averages compared with off-trend averages.
 
 ## 🗓️ Proposed Timeline
 
@@ -117,13 +84,12 @@ pip install -r pip_requirements.txt
 │
 ├── src                         <- Source code
 │   ├── data                            <- Data directory
-│   ├── models                          <- Model directory
 │   ├── utils                           <- Utility directory
 │   ├── scripts                         <- Shell scripts
 │
 │
-├── milestone_2.ipynb               <- a well-structured notebook showing the results of data exploration for P2
-├── milestone_3.ipynb                 <- a well-structured notebook showing our analysis for P3
+├── data_exploration.ipynb               <- a well-structured notebook showing the results of data exploration for P2
+├── beer_analysis.ipynb                 <- a well-structured notebook showing our analysis for P3
 │
 ├── .gitignore                  <- List of files ignored by git
 ├── pip_requirements.txt        <- File for installing python dependencies
