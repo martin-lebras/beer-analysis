@@ -1,0 +1,7 @@
+pandas
+thefuzz
+gdown
+matplotlib
+seaborn
+numpy
+scipy
